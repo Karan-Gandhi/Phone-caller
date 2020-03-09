@@ -1,0 +1,19 @@
+{
+    "name": "phone_caller_test",
+    "version": "1.0.0",
+    "description": "this is a app that will call a person from the computer provided the phone is connected with the computer",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "call",
+        "phone"
+    ],
+    "author": "Karan Gandhi",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.17.1",
+        "socket.io": "^2.3.0"
+    }
+}
