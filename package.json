@@ -4,7 +4,8 @@
     "description": "this is a app that will call a person from the computer provided the phone is connected with the computer",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "node index.js",
+        "dev": "nodemon index.js"
     },
     "keywords": [
         "call",
