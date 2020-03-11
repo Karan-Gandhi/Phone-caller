@@ -6,6 +6,7 @@ window.onload = () => setInterval(() => load(), 200);
 async function load() {
     clients = await getClients();
     root = document.getElementById("root");
+    root.innerHTML = "";
     for (let i = 0; i < clients.clients.length; i++) {
         let div = document.createElement("div");
         div.innerHTML = clients.clients[i];
