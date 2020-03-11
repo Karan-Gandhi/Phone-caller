@@ -2,8 +2,10 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3850;
 const server = app.listen(port, () => console.log(`listening at ${port}`));
-app.use(express.static("public"));
 const io = require("socket.io")(server);
+
+app.use(express.static("public"));
+app.use(express.json({ limit: "1mb" }));
 
 let clients = [];
 let sockets = [];
