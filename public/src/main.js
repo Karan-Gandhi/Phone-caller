@@ -1,7 +1,7 @@
 const socket = io.connect(window.location.href);
 let id, root, clients;
 
-window.onload = () => load();
+window.onload = () => setInterval(() => load(), 200);
 
 async function load() {
     clients = await getClients();
