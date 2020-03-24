@@ -1,7 +1,7 @@
 const socket = io.connect(window.location.href);
-let id, root, clients;
+let id, root, clients, room;
 
-window.onload = () => setInterval(() => load(), 5000);
+window.onload = () => setInterval(() => load(), 500);
 
 async function load() {
     clients = await getClients();
@@ -18,19 +18,14 @@ async function load() {
     }
 }
 
-async function getClients() {
-    let api = "/clients";
-    let response = await fetch(api);
-    let data = await response.json();
-    return data;
-}
+const getClients = async () => await (await fetch("/clients")).json();
+const requestConnection = (id) => socket.emit("requestConnection", id);
 
+socket.on("callRequest", (data) => (window.location.href = "tel:" + data));
 socket.on("socketId", (data) => (id = data));
 socket.on("connectionRequest", (data) => socket.emit("connectionConfirmation", { status: confirm(data + " is asking you to connect"), ids: [id, data] }));
-socket.on("connectionSucess", (data) => console.log(data));
+socket.on("connectionSucess", (data) => (room = data));
 
-function requestConnection(id) {
-    socket.emit("requestConnection", id);
+function requestToCall(numb) {
+    socket.emit("requestCall", { roomData: room, number: numb, from: id });
 }
-
-function requestToCall(numb) {}
